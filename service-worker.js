@@ -2,7 +2,7 @@
 
 
 const CACHE_NAME =
-    "saju-finance-v7";
+    "saju-finance-v8";
 
 
 const APP_FILES = [
