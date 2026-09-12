@@ -3542,3 +3542,178 @@ html[data-theme="dark"] .theme-option.active {
 html[data-theme="dark"] canvas {
     color-scheme: dark;
 }
+
+/* ========================================
+   SECURITY LOCK SCREEN
+======================================== */
+
+.security-lock-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #08111f,
+            #0f172a
+        );
+}
+
+
+.security-lock-screen.hidden {
+    display: none;
+}
+
+
+.security-lock-card {
+    width: 100%;
+    max-width: 380px;
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    background: #111827;
+
+    border: 1px solid #263244;
+
+    box-shadow:
+        0 24px 60px
+        rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+}
+
+
+.security-lock-logo {
+    width: 72px;
+    height: 72px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    margin-bottom: 18px;
+}
+
+
+.security-lock-card h1 {
+    margin: 0 0 8px;
+
+    font-size: 24px;
+
+    color: #f8fafc;
+}
+
+
+.security-lock-card > p {
+    margin: 0 0 24px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+#security-pin-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+#security-pin-input,
+#security-pin-confirm {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border: 1px solid #334155;
+    border-radius: 14px;
+
+    background: #0f172a;
+    color: #f8fafc;
+
+    font: inherit;
+    font-size: 20px;
+    font-weight: 700;
+
+    text-align: center;
+    letter-spacing: 8px;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+
+#security-pin-input:focus,
+#security-pin-confirm:focus {
+    border-color: #0ea5e9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(14, 165, 233, 0.12);
+}
+
+
+#security-pin-input::placeholder,
+#security-pin-confirm::placeholder {
+    color: #64748b;
+
+    letter-spacing: normal;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.security-lock-error {
+    min-height: 18px;
+
+    margin: 0;
+
+    color: #f87171;
+
+    font-size: 12px;
+}
+
+
+.security-unlock-button {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #2563eb
+        );
+
+    color: white;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.security-unlock-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}

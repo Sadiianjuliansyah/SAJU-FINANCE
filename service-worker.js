@@ -2,7 +2,7 @@
 
 
 const CACHE_NAME =
-    "saju-finance-v8";
+    "saju-finance-v10";
 
 
 const APP_FILES = [
@@ -21,6 +21,7 @@ const APP_FILES = [
     "./js/targets.js",
     "./js/reports.js",
     "./js/backup.js",
+    "./js/security.js",
     "./js/app.js",
 
     "./assets/icons/saju-app-icon.svg",
