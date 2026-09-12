@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#0b1220">
+    <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Finance"
+>
+<meta
+    name="mobile-web-app-capable"
+    content="yes"
+>
+
+<link
+    rel="manifest"
+    href="manifest.json"
+>
+
+<link 
+    rel="apple-touch-icon" 
+    sizes="180x180" 
+    href="assets/icons/saju-apple-touch-icon.png"
+>
+
+<link 
+    rel="icon" 
+    href="assets/icons/saju-icon-192.png" 
+    type="image/png" 
+>
+
+
+    <title>Saju Finance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR DESKTOP -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img 
+    class="brand-logo" 
+    src="assets/icons/saju-icon-192.png" 
+    alt="Saju Finance"
+>
+
+                <div class="brand-text">
+                    <strong>Personal Finance</strong>
+                    <span>Tracker</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <button
+                    class="nav-item active"
+                    data-page="dashboard"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="transactions"
+                >
+                    <span class="nav-icon">↕</span>
+                    <span>Transaksi</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="assets"
+                >
+                    <span class="nav-icon">◆</span>
+                    <span>Aset</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="allocations"
+                >
+                    <span class="nav-icon">◫</span>
+                    <span>Alokasi</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="targets"
+                >
+                    <span class="nav-icon">◎</span>
+                    <span>Target</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="reports"
+                >
+                    <span class="nav-icon">▥</span>
+                    <span>Laporan</span>
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="settings"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span>Backup & Settings</span>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>Local Finance App</span>
+                <small>Data tersimpan di perangkat</small>
+            </div>
+
+        </aside>
+
+
+        <!-- AREA UTAMA -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="topbar-label">Saju Finance</p>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+
+                <div class="topbar-info">
+                    <span id="current-date"></span>
+                </div>
+
+            </header>
+
+
+            <div class="content-area">
+
+                <!-- DASHBOARD -->
+                <section
+    class="page active"
+    id="dashboard"
+>
+
+    <div class="dashboard-header">
+
+        <div class="page-heading dashboard-heading">
+
+            <div>
+                <h2>Dashboard Keuangan</h2>
+
+                <p id="dashboard-period-text">
+                    Ringkasan kondisi keuangan pribadi.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-filters">
+
+            <div class="dashboard-filter-group">
+
+                <label for="dashboard-year-filter">
+                    Tahun
+                </label>
+
+                <select
+                    id="dashboard-year-filter"
+                ></select>
+
+            </div>
+
+
+            <div class="dashboard-filter-group">
+
+                <label for="dashboard-month-filter">
+                    Bulan
+                </label>
+
+                <select
+                    id="dashboard-month-filter"
+                >
+
+                    <option value="all">
+                        Semua Bulan
+                    </option>
+
+                    <option value="1">
+                        Januari
+                    </option>
+
+                    <option value="2">
+                        Februari
+                    </option>
+
+                    <option value="3">
+                        Maret
+                    </option>
+
+                    <option value="4">
+                        April
+                    </option>
+
+                    <option value="5">
+                        Mei
+                    </option>
+
+                    <option value="6">
+                        Juni
+                    </option>
+
+                    <option value="7">
+                        Juli
+                    </option>
+
+                    <option value="8">
+                        Agustus
+                    </option>
+
+                    <option value="9">
+                        September
+                    </option>
+
+                    <option value="10">
+                        Oktober
+                    </option>
+
+                    <option value="11">
+                        November
+                    </option>
+
+                    <option value="12">
+                        Desember
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-grid">
+
+        <article class="summary-card">
+
+            <div class="summary-card-icon income">
+                ↓
+            </div>
+
+            <div class="summary-card-content">
+
+                <span>
+                    Total Pemasukan
+                </span>
+
+                <strong
+                    id="dashboard-income"
+                    class="summary-income"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <article class="summary-card">
+
+            <div class="summary-card-icon expense">
+                ↑
+            </div>
+
+            <div class="summary-card-content">
+
+                <span>
+                    Total Pengeluaran
+                </span>
+
+                <strong
+                    id="dashboard-expense"
+                    class="summary-expense"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <article class="summary-card">
+
+            <div class="summary-card-icon balance">
+                =
+            </div>
+
+            <div class="summary-card-content">
+
+                <span>
+                    Saldo Bersih
+                </span>
+
+                <strong
+                    id="dashboard-balance"
+                    class="summary-balance"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+    <article class="finance-card dashboard-chart-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Trend Pemasukan</h3>
+                <p>
+                    Pergerakan pemasukan berdasarkan periode.
+                </p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="income-trend-chart"></canvas>
+        </div>
+
+        <div
+            class="chart-empty"
+            id="income-chart-empty"
+            hidden
+        >
+            Belum ada data pemasukan pada periode ini.
+        </div>
+
+    </article>
+
+
+    <article class="finance-card dashboard-chart-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Komposisi Jenis Akun</h3>
+                <p>
+                    Estimasi saldo bersih berdasarkan akun.
+                </p>
+            </div>
+        </div>
+
+        <div class="donut-wrapper">
+
+            <div class="chart-container donut-container">
+                <canvas id="account-chart"></canvas>
+            </div>
+
+            <div
+                class="chart-empty"
+                id="account-chart-empty"
+                hidden
+            >
+                Belum ada saldo akun pada periode ini.
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+
+<div class="top-transaction-grid">
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Top 3 Pemasukan Terbesar</h3>
+                <p>
+                    Berdasarkan total deskripsi pemasukan.
+                </p>
+            </div>
+        </div>
+
+        <div
+            class="ranking-list"
+            id="top-income-list"
+        ></div>
+
+    </article>
+
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Top 3 Pengeluaran Terbesar</h3>
+                <p>
+                    Berdasarkan total deskripsi pengeluaran.
+                </p>
+            </div>
+        </div>
+
+        <div
+            class="ranking-list"
+            id="top-expense-list"
+        ></div>
+
+    </article>
+
+</div>
+
+</section>
+
+
+                <!-- TRANSAKSI -->
+                <section
+    class="page"
+    id="transactions"
+>
+
+    <div class="page-heading">
+
+        <div>
+            <h2>Transaksi</h2>
+            <p>
+                Kelola pemasukan dan pengeluaran pribadi.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="transaction-layout">
+
+        <div class="finance-card transaction-form-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3 id="transaction-form-title">
+                        Tambah Transaksi
+                    </h3>
+
+                    <p>
+                        Masukkan transaksi secara manual.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="transaction-form">
+
+                <input
+                    type="hidden"
+                    id="transaction-id"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="transaction-date">
+                            Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="transaction-date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-type">
+                            Jenis Transaksi
+                        </label>
+
+                        <select
+                            id="transaction-type"
+                            required
+                        >
+                            <option value="">
+                                Pilih jenis
+                            </option>
+
+                            <option value="PEMASUKAN">
+                                Pemasukan
+                            </option>
+
+                            <option value="PENGELUARAN">
+                                Pengeluaran
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-account">
+                            Jenis Akun
+                        </label>
+
+                        <input
+                            type="text"
+                            id="transaction-account"
+                            placeholder="Contoh: BCA"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-description">
+                            Deskripsi
+                        </label>
+
+                        <input
+                            type="text"
+                            id="transaction-description"
+                            placeholder="Contoh: Gaji Live TikTok"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-amount">
+                            Nominal
+                        </label>
+
+                        <input
+                            type="number"
+                            id="transaction-amount"
+                            placeholder="0"
+                            min="1"
+                            step="1"
+                            inputmode="numeric"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-notes">
+                            Catatan
+                            <span>Opsional</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="transaction-notes"
+                            placeholder="Tambahkan catatan"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="transaction-cancel"
+                        hidden
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                        id="transaction-submit"
+                    >
+                        Simpan Transaksi
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <div class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Riwayat Transaksi</h3>
+                    <p>
+                        Seluruh data tersimpan lokal di perangkat.
+                    </p>
+                </div>
+
+            </div>
+<div class="transaction-toolbar">
+
+    <div class="transaction-search">
+
+        <label for="transaction-search">
+            Cari
+        </label>
+
+        <input
+            type="search"
+            id="transaction-search"
+            placeholder="Cari deskripsi, akun, atau catatan..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div class="transaction-toolbar-filter">
+
+        <label for="transaction-type-filter">
+            Jenis
+        </label>
+
+        <select id="transaction-type-filter">
+
+            <option value="all">
+                Semua
+            </option>
+
+            <option value="PEMASUKAN">
+                Pemasukan
+            </option>
+
+            <option value="PENGELUARAN">
+                Pengeluaran
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="transaction-toolbar-filter">
+
+        <label for="transaction-account-filter">
+            Akun
+        </label>
+
+        <select id="transaction-account-filter">
+
+            <option value="all">
+                Semua Akun
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="transaction-toolbar-filter">
+
+        <label for="transaction-sort">
+            Urutkan
+        </label>
+
+        <select id="transaction-sort">
+
+            <option value="date-desc">
+                Tanggal Terbaru
+            </option>
+
+            <option value="date-asc">
+                Tanggal Terlama
+            </option>
+
+            <option value="amount-desc">
+                Nominal Terbesar
+            </option>
+
+            <option value="amount-asc">
+                Nominal Terkecil
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<div class="transaction-result-info">
+
+    <span id="transaction-result-count">
+        0 transaksi
+    </span>
+
+    <button
+        type="button"
+        class="transaction-reset-filter"
+        id="transaction-reset-filter"
+    >
+        Reset Filter
+    </button>
+
+</div>
+
+            <div
+                class="transaction-empty"
+                id="transaction-empty"
+            >
+                <div>↕</div>
+
+                <h4>Belum ada transaksi</h4>
+
+                <p>
+                    Tambahkan transaksi pertama menggunakan
+                    formulir di atas.
+                </p>
+            </div>
+
+
+            <div
+                class="transaction-list"
+                id="transaction-list"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+                <!-- ASET -->
+                <section
+    class="page"
+    id="assets"
+>
+
+    <div class="page-heading">
+
+        <div>
+            <h2>Manajemen Aset</h2>
+
+            <p>
+                Kelola aset, investasi dan snapshot kekayaan.
+            </p>
+        </div>
+
+    </div>
+
+<div class="asset-dashboard-filters">
+
+    <div class="dashboard-filter-group">
+        <label>Periode</label>
+
+        <select
+            id="asset-dashboard-period"
+        ></select>
+    </div>
+
+
+    <div class="dashboard-filter-group">
+        <label>Tahun</label>
+
+        <select
+            id="asset-dashboard-year"
+        ></select>
+    </div>
+
+
+    <div class="dashboard-filter-group">
+        <label>Bulan</label>
+
+        <select
+            id="asset-dashboard-month"
+        >
+            <option value="1">Januari</option>
+            <option value="2">Februari</option>
+            <option value="3">Maret</option>
+            <option value="4">April</option>
+            <option value="5">Mei</option>
+            <option value="6">Juni</option>
+            <option value="7">Juli</option>
+            <option value="8">Agustus</option>
+            <option value="9">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Desember</option>
+        </select>
+    </div>
+
+
+    <div class="dashboard-filter-group">
+        <label>Kategori</label>
+
+        <select
+            id="asset-dashboard-category"
+        ></select>
+    </div>
+
+
+    <div class="dashboard-filter-group">
+        <label>Nama Aset</label>
+
+        <select
+            id="asset-dashboard-name"
+        ></select>
+    </div>
+
+
+    <div class="dashboard-filter-group">
+        <label>Platform</label>
+
+        <select
+            id="asset-dashboard-platform"
+        ></select>
+    </div>
+
+</div>
+
+
+<div class="asset-summary-grid">
+
+    <article class="asset-summary-card">
+        <span>Total Nilai Aset</span>
+
+        <strong id="asset-total-value">
+            Rp0
+        </strong>
+    </article>
+
+
+    <article class="asset-summary-card">
+        <span>Total Modal</span>
+
+        <strong id="asset-total-capital-summary">
+            Rp0
+        </strong>
+    </article>
+
+
+    <article class="asset-summary-card">
+        <span>Total Keuntungan</span>
+
+        <strong id="asset-total-profit">
+            Rp0
+        </strong>
+    </article>
+
+
+    <article class="asset-summary-card">
+        <span>Return Portofolio</span>
+
+        <strong id="asset-portfolio-return">
+            0.00%
+        </strong>
+    </article>
+
+
+    <article class="asset-summary-card">
+        <span>Aset Terbesar</span>
+
+        <div
+            class="asset-highlight-value"
+            id="asset-largest"
+        >
+            <span>Belum ada aset</span>
+            <strong>Rp0</strong>
+        </div>
+    </article>
+
+
+    <article class="asset-summary-card">
+        <span>Perubahan vs Periode Sebelumnya</span>
+
+        <div
+            class="asset-highlight-value"
+            id="asset-change"
+        >
+            <span>Belum ada pembanding</span>
+            <strong>0.00%</strong>
+        </div>
+    </article>
+
+</div>
+
+
+<div
+    class="asset-category-cards"
+    id="asset-category-cards"
+></div>
+
+
+<div class="asset-dashboard-chart-grid">
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Trend Total Kekayaan</h3>
+                <p>
+                    Perubahan nilai seluruh aset per periode.
+                </p>
+            </div>
+        </div>
+
+        <div class="asset-chart-container">
+            <canvas
+                id="wealth-trend-chart"
+            ></canvas>
+        </div>
+
+    </article>
+
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Komposisi Aset</h3>
+                <p>
+                    Komposisi nilai berdasarkan kategori.
+                </p>
+            </div>
+        </div>
+
+        <div class="asset-chart-container">
+            <canvas
+                id="asset-composition-chart"
+            ></canvas>
+        </div>
+
+    </article>
+
+</div>
+
+
+<div class="finance-card">
+
+    <div class="card-header">
+        <div>
+            <h3>Trend Nilai Per Kategori</h3>
+
+            <p>
+                Perkembangan masing-masing kategori aset.
+            </p>
+        </div>
+    </div>
+
+    <div class="asset-chart-container asset-chart-wide">
+        <canvas
+            id="category-trend-chart"
+        ></canvas>
+    </div>
+
+</div>
+
+
+<div class="asset-dashboard-chart-grid three">
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Nilai Per Aset</h3>
+            </div>
+        </div>
+
+        <div class="asset-chart-container">
+            <canvas
+                id="asset-value-chart"
+            ></canvas>
+        </div>
+
+    </article>
+
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Keuntungan Aset</h3>
+            </div>
+        </div>
+
+        <div class="asset-chart-container">
+            <canvas
+                id="asset-profit-chart"
+            ></canvas>
+        </div>
+
+    </article>
+
+
+    <article class="finance-card">
+
+        <div class="card-header">
+            <div>
+                <h3>Return Aset</h3>
+            </div>
+        </div>
+
+        <div class="asset-chart-container">
+            <canvas
+                id="asset-return-chart"
+            ></canvas>
+        </div>
+
+    </article>
+
+</div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3 id="asset-form-title">
+                    Tambah Aset
+                </h3>
+
+                <p>
+                    Masukkan data aset secara manual.
+                </p>
+            </div>
+
+        </div>
+
+
+        <form id="asset-form">
+
+            <input
+                type="hidden"
+                id="asset-id"
+            >
+
+
+            <div class="form-grid asset-form-grid">
+
+                <div class="form-group">
+
+                    <label for="asset-period">
+                        Periode
+                    </label>
+
+                    <input
+                        type="month"
+                        id="asset-period"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-category">
+                        Kategori Aset
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-category"
+                        placeholder="Contoh: Cash & Liquid"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-name">
+                        Nama Aset
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-name"
+                        placeholder="Contoh: BCA"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-platform">
+                        Platform / Akun
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-platform"
+                        placeholder="Contoh: BCA"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-type">
+                        Jenis
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-type"
+                        placeholder="Contoh: Bank / Batangan"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-activity">
+                        Aktivitas Periode
+                    </label>
+
+                    <select
+                        id="asset-activity"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih aktivitas
+                        </option>
+
+                        <option value="Baseline Awal">
+                            Baseline Awal
+                        </option>
+
+                        <option value="Penambahan">
+                            Penambahan
+                        </option>
+
+                        <option value="Pengurangan">
+                            Pengurangan
+                        </option>
+
+                        <option value="Snapshot Bulanan">
+                            Snapshot Bulanan
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-quantity">
+                        Kuantitas
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="asset-quantity"
+                        placeholder="0"
+                        min="0"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-unit">
+                        Satuan
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-unit"
+                        placeholder="Contoh: Gram"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-average-price">
+                        Harga Beli Rata-Rata
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="asset-average-price"
+                        placeholder="0"
+                        min="0"
+                        step="1"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-current-price">
+                        Harga Sekarang / Unit
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="asset-current-price"
+                        placeholder="0"
+                        min="0"
+                        step="1"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-total-capital">
+                        Total Modal
+                    </label>
+
+                    <input
+                        type="number"
+                        id="asset-total-capital"
+                        placeholder="0"
+                        min="0"
+                        step="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="asset-current-value">
+                        Nilai Sekarang
+                    </label>
+
+                    <input
+                        type="number"
+                        id="asset-current-value"
+                        placeholder="0"
+                        min="0"
+                        step="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Keuntungan
+                    </label>
+
+                    <div class="calculated-field">
+                        <strong id="asset-profit-preview">
+                            Rp0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Return %
+                    </label>
+
+                    <div class="calculated-field">
+                        <strong id="asset-return-preview">
+                            0.00%
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group asset-notes-group">
+
+                    <label for="asset-notes">
+                        Catatan
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="asset-notes"
+                        placeholder="Catatan aset"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="asset-cancel"
+                    hidden
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="asset-submit"
+                >
+                    Simpan Aset
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>Data Aset</h3>
+
+                <p>
+                    Seluruh data tersimpan lokal di perangkat.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div
+            class="transaction-empty"
+            id="asset-empty"
+        >
+
+            <div>◆</div>
+
+            <h4>Belum ada aset</h4>
+
+            <p>
+                Tambahkan aset pertama melalui formulir di atas.
+            </p>
+
+        </div>
+
+
+        <div
+            class="asset-list"
+            id="asset-list"
+        ></div>
+
+    </div>
+
+</section>
+
+
+                <!-- ALOKASI -->
+                <section
+    class="page"
+    id="allocations"
+>
+
+    <div class="allocation-header">
+
+        <div class="page-heading allocation-heading">
+
+            <div>
+                <h2>Alokasi Saldo</h2>
+
+                <p>
+                    Atur penggunaan saldo bersih secara terstruktur.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-filters">
+
+            <div class="dashboard-filter-group">
+
+                <label>
+                    Tahun
+                </label>
+
+                <select
+                    id="allocation-year-filter"
+                ></select>
+
+            </div>
+
+
+            <div class="dashboard-filter-group">
+
+                <label>
+                    Bulan
+                </label>
+
+                <select
+                    id="allocation-month-filter"
+                >
+
+                    <option value="1">
+                        Januari
+                    </option>
+
+                    <option value="2">
+                        Februari
+                    </option>
+
+                    <option value="3">
+                        Maret
+                    </option>
+
+                    <option value="4">
+                        April
+                    </option>
+
+                    <option value="5">
+                        Mei
+                    </option>
+
+                    <option value="6">
+                        Juni
+                    </option>
+
+                    <option value="7">
+                        Juli
+                    </option>
+
+                    <option value="8">
+                        Agustus
+                    </option>
+
+                    <option value="9">
+                        September
+                    </option>
+
+                    <option value="10">
+                        Oktober
+                    </option>
+
+                    <option value="11">
+                        November
+                    </option>
+
+                    <option value="12">
+                        Desember
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="allocation-summary-grid">
+
+        <article class="allocation-summary-card">
+
+            <span>
+                Total Saldo Dialokasikan
+            </span>
+
+            <strong id="allocation-total">
+                Rp0
+            </strong>
+
+            <small id="allocation-period-label">
+                -
+            </small>
+
+        </article>
+
+
+        <article class="allocation-summary-card">
+
+            <span>
+                Jumlah Alokasi
+            </span>
+
+            <strong id="allocation-count">
+                0 alokasi
+            </strong>
+
+            <small>
+                Pada periode terpilih
+            </small>
+
+        </article>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3 id="allocation-form-title">
+                    Tambah Alokasi
+                </h3>
+
+                <p>
+                    Masukkan pembagian saldo secara manual.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="allocation-form">
+
+            <input
+                type="hidden"
+                id="allocation-id"
+            >
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="allocation-date">
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="allocation-date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allocation-category">
+                        Kategori Alokasi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="allocation-category"
+                        list="allocation-category-options"
+                        placeholder="Contoh: WiFi"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <datalist id="allocation-category-options">
+
+                        <option value="WiFi">
+
+                        <option value="Emas Digital">
+
+                        <option value="Cash & Liquid">
+
+                        <option value="Reksadana Pasar Uang">
+
+                        <option value="Operasional">
+
+                        <option value="Gaya Hidup & Hiburan">
+
+                        <option value="Grooming & Self Care">
+
+                        <option value="Kesehatan">
+
+                        <option value="Gadget & Hobi">
+
+                    </datalist>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allocation-type">
+                        Jenis Alokasi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="allocation-type"
+                        list="allocation-type-options"
+                        placeholder="Contoh: Investasi"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <datalist id="allocation-type-options">
+
+                        <option value="Pengeluaran Rutin">
+
+                        <option value="Investasi">
+
+                        <option value="Dana Darurat">
+
+                        <option value="Operasional Bulanan">
+
+                        <option value="Kebutuhan Pribadi">
+
+                    </datalist>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allocation-description">
+                        Keterangan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="allocation-description"
+                        placeholder="Contoh: Tagihan WiFi Bulanan"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group allocation-amount-group">
+
+                    <label for="allocation-amount">
+                        Nominal
+                    </label>
+
+                    <input
+                        type="number"
+                        id="allocation-amount"
+                        placeholder="0"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="allocation-cancel"
+                    hidden
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="allocation-submit"
+                >
+                    Simpan Alokasi
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Daftar Alokasi
+                </h3>
+
+                <p>
+                    Alokasi pada bulan dan tahun yang dipilih.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="transaction-empty"
+            id="allocation-empty"
+        >
+
+            <div>
+                ◫
+            </div>
+
+            <h4>
+                Belum ada alokasi
+            </h4>
+
+            <p>
+                Tambahkan alokasi melalui formulir di atas.
+            </p>
+
+        </div>
+
+
+        <div
+            class="allocation-list"
+            id="allocation-list"
+        ></div>
+
+    </div>
+
+</section>
+
+
+                <!-- TARGET -->
+                <section
+    class="page"
+    id="targets"
+>
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>
+                Target Keuangan
+            </h2>
+
+            <p>
+                Buat dan pantau tujuan finansial pribadi.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="target-summary">
+
+        <div>
+
+            <span>
+                Total Target Aktif
+            </span>
+
+            <strong id="target-count">
+                0 target
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3 id="target-form-title">
+                    Tambah Target
+                </h3>
+
+                <p>
+                    Tentukan target dan perkembangan saat ini.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="target-form">
+
+            <input
+                type="hidden"
+                id="target-id"
+            >
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="target-name">
+                        Nama Target
+                    </label>
+
+                    <input
+                        type="text"
+                        id="target-name"
+                        placeholder="Contoh: Target Kekayaan 2026"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="target-category">
+                        Kategori
+                    </label>
+
+                    <select
+                        id="target-category"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih kategori
+                        </option>
+
+                        <option value="Target Income Bulanan">
+                            Target Income Bulanan
+                        </option>
+
+                        <option value="Maksimal Pengeluaran Bulanan">
+                            Maksimal Pengeluaran Bulanan
+                        </option>
+
+                        <option value="Target Kekayaan">
+                            Target Kekayaan
+                        </option>
+
+                        <option value="Target Dana Darurat">
+                            Target Dana Darurat
+                        </option>
+
+                        <option value="Target Investasi">
+                            Target Investasi
+                        </option>
+
+                        <option value="Target Tabungan">
+                            Target Tabungan
+                        </option>
+
+                        <option value="Lainnya">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="target-amount">
+                        Target Nominal
+                    </label>
+
+                    <input
+                        type="number"
+                        id="target-amount"
+                        placeholder="0"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+    <label for="target-current">
+        Nominal Saat Ini
+    </label>
+
+    <input
+        type="number"
+        id="target-current"
+        value="0"
+        min="0"
+        step="1"
+        inputmode="numeric"
+        required
+    >
+
+    <small
+        class="target-auto-info"
+        id="target-auto-info"
+        hidden
+    >
+        Nilai ini dihitung otomatis dari data aplikasi.
+    </small>
+
+</div>
+
+
+                <div class="form-group">
+
+                    <label for="target-deadline">
+                        Deadline
+                        <span>Opsional</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="target-deadline"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Progress
+                    </label>
+
+                    <div class="calculated-field">
+
+                        <strong
+                            id="target-progress-preview"
+                        >
+                            0.00%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <div class="calculated-field">
+
+                        <strong
+                            class="target-status-preview"
+                            id="target-status-preview"
+                        >
+                            Belum Dimulai
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="target-cancel"
+                    hidden
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="target-submit"
+                >
+                    Simpan Target
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Daftar Target
+                </h3>
+
+                <p>
+                    Seluruh target keuangan yang kamu buat.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="transaction-empty"
+            id="target-empty"
+        >
+
+            <div>
+                ◎
+            </div>
+
+            <h4>
+                Belum ada target
+            </h4>
+
+            <p>
+                Buat target keuangan pertama melalui formulir di atas.
+            </p>
+
+        </div>
+
+
+        <div
+            class="target-list"
+            id="target-list"
+        ></div>
+
+    </div>
+
+</section>
+
+
+                <!-- LAPORAN -->
+                <section
+    class="page"
+    id="reports"
+>
+
+    <div class="report-header">
+
+        <div class="page-heading report-heading">
+
+            <div>
+
+                <h2>
+                    Laporan & Statistik
+                </h2>
+
+                <p>
+                    Analisis transaksi dan perkembangan aset.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-filter-group">
+
+            <label for="report-year-filter">
+                Tahun
+            </label>
+
+            <select
+                id="report-year-filter"
+            ></select>
+
+        </div>
+
+    </div>
+
+
+    <div class="report-summary-grid">
+
+        <article class="report-summary-card">
+
+            <span>
+                Total Pemasukan
+            </span>
+
+            <strong
+                class="income"
+                id="report-total-income"
+            >
+                Rp0
+            </strong>
+
+        </article>
+
+
+        <article class="report-summary-card">
+
+            <span>
+                Total Pengeluaran
+            </span>
+
+            <strong
+                class="expense"
+                id="report-total-expense"
+            >
+                Rp0
+            </strong>
+
+        </article>
+
+
+        <article class="report-summary-card">
+
+            <span>
+                Saldo Bersih
+            </span>
+
+            <strong id="report-net-balance">
+                Rp0
+            </strong>
+
+        </article>
+
+
+        <article class="report-summary-card">
+
+            <span>
+                Kekayaan Terbaru
+            </span>
+
+            <strong id="report-latest-wealth">
+                Rp0
+            </strong>
+
+        </article>
+
+    </div>
+
+
+    <div class="report-chart-grid">
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Pemasukan Per Bulan</h3>
+                    <p>
+                        Total pemasukan setiap bulan.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-income-chart"></canvas>
+            </div>
+
+        </article>
+
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Pengeluaran Per Bulan</h3>
+                    <p>
+                        Total pengeluaran setiap bulan.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-expense-chart"></canvas>
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="report-chart-grid">
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Saldo Bersih Per Bulan</h3>
+                    <p>
+                        Pemasukan dikurangi pengeluaran.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-balance-chart"></canvas>
+            </div>
+
+        </article>
+
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>
+                        Pemasukan vs Pengeluaran
+                    </h3>
+
+                    <p>
+                        Perbandingan bulanan.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-comparison-chart"></canvas>
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="report-ranking-grid">
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>
+                        Sumber Pemasukan Terbesar
+                    </h3>
+
+                    <p>
+                        Dikelompokkan berdasarkan deskripsi.
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                class="report-ranking-list"
+                id="report-top-income"
+            ></div>
+
+        </article>
+
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>
+                        Pengeluaran Terbesar
+                    </h3>
+
+                    <p>
+                        Dikelompokkan berdasarkan deskripsi.
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                class="report-ranking-list"
+                id="report-top-expense"
+            ></div>
+
+        </article>
+
+    </div>
+
+
+    <div class="report-chart-grid">
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>
+                        Trend Kekayaan
+                    </h3>
+
+                    <p>
+                        Total nilai aset per periode.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-wealth-chart"></canvas>
+            </div>
+
+        </article>
+
+
+        <article class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>
+                        Return Investasi
+                    </h3>
+
+                    <p>
+                        Return portofolio aset per periode.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="report-chart">
+                <canvas id="report-return-chart"></canvas>
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>
+                    Komposisi Aset
+                </h3>
+
+                <p>
+                    Komposisi periode aset terbaru pada tahun terpilih.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="report-chart report-donut-chart">
+            <canvas id="report-composition-chart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+
+                <!-- SETTINGS -->
+                <section
+    class="page"
+    id="settings"
+>
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>
+                Backup & Settings
+            </h2>
+
+            <p>
+                Kelola keamanan, pemindahan dan ekspor data lokal.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-grid">
+
+<article class="settings-card">
+
+    <div class="settings-icon">
+        ◐
+    </div>
+
+    <div class="settings-content">
+
+        <h3>
+            Tema Aplikasi
+        </h3>
+
+        <p>
+            Pilih tampilan aplikasi yang paling nyaman digunakan.
+        </p>
+
+        <div class="theme-options">
+
+            <button
+                type="button"
+                class="theme-option"
+                data-theme-value="light"
+            >
+                Light
+            </button>
+
+            <button
+                type="button"
+                class="theme-option"
+                data-theme-value="dark"
+            >
+                Dark
+            </button>
+
+            <button
+                type="button"
+                class="theme-option"
+                data-theme-value="system"
+            >
+                Ikuti Sistem
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+        <!-- BACKUP -->
+        <article class="settings-card">
+
+            <div class="settings-icon">
+                ↓
+            </div>
+
+            <div class="settings-content">
+
+                <h3>
+                    Export Backup
+                </h3>
+
+                <p>
+                    Simpan seluruh database aplikasi ke file JSON.
+                    File ini dapat digunakan untuk memindahkan atau
+                    memulihkan data.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="export-backup-button"
+                >
+                    Export Backup JSON
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- RESTORE -->
+        <article class="settings-card">
+
+            <div class="settings-icon">
+                ↑
+            </div>
+
+            <div class="settings-content">
+
+                <h3>
+                    Import / Restore Backup
+                </h3>
+
+                <p>
+                    Pulihkan seluruh database dari file backup JSON.
+                    Data lokal saat ini akan diganti.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="import-backup-button"
+                >
+                    Pilih File Backup
+                </button>
+
+
+                <input
+                    type="file"
+                    id="import-backup-input"
+                    accept=".json,application/json"
+                    hidden
+                >
+
+            </div>
+
+        </article>
+
+
+        <!-- CSV -->
+        <article class="settings-card">
+
+            <div class="settings-icon">
+                ⇩
+            </div>
+
+            <div class="settings-content">
+
+                <h3>
+                    Export Transaksi CSV
+                </h3>
+
+                <p>
+                    Ekspor seluruh transaksi agar dapat dibuka
+                    menggunakan Excel atau aplikasi spreadsheet.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="export-csv-button"
+                >
+                    Export CSV
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- DELETE -->
+        <article class="settings-card danger">
+
+            <div class="settings-icon danger">
+                !
+            </div>
+
+            <div class="settings-content">
+
+                <h3>
+                    Hapus Semua Data
+                </h3>
+
+                <p>
+                    Menghapus seluruh database lokal aplikasi pada
+                    perangkat ini. Buat backup terlebih dahulu jika
+                    datanya masih diperlukan.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-danger"
+                    id="delete-all-data-button"
+                >
+                    Hapus Semua Data
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="finance-card settings-status-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Status Data
+                </h3>
+
+                <p id="backup-status">
+                    Database lokal siap digunakan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="settings-information">
+
+            <div>
+
+                <span>
+                    Penyimpanan Utama
+                </span>
+
+                <strong>
+                    IndexedDB
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Cloud Sync
+                </span>
+
+                <strong>
+                    Tidak digunakan
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Backend
+                </span>
+
+                <strong>
+                    Tidak digunakan
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Format Backup
+                </span>
+
+                <strong>
+                    JSON
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="finance-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Tentang Aplikasi
+                </h3>
+
+                <p>
+                    Saju Finance
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="app-information">
+
+            <p>
+                Aplikasi manajemen keuangan pribadi berbasis
+                HTML, CSS, Vanilla JavaScript dan IndexedDB.
+            </p>
+
+            <p>
+                Seluruh data keuangan disimpan secara lokal
+                pada perangkat.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- BOTTOM NAVIGATION MOBILE -->
+    <nav class="mobile-nav">
+
+        <button
+            class="mobile-nav-item active"
+            data-page="dashboard"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="transactions"
+        >
+            <span>↕</span>
+            <small>Transaksi</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="assets"
+        >
+            <span>◆</span>
+            <small>Aset</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="allocations"
+        >
+            <span>◫</span>
+            <small>Alokasi</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="targets"
+        >
+            <span>◎</span>
+            <small>Target</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="reports"
+        >
+            <span>▥</span>
+            <small>Laporan</small>
+        </button>
+
+        <button
+            class="mobile-nav-item"
+            data-page="settings"
+        >
+            <span>⚙</span>
+            <small>Settings</small>
+        </button>
+
+    </nav>
+
+    <div
+    class="toast"
+    id="toast"
+></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/db.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/assets-dashboard.js"></script>
+<script src="js/allocations.js"></script>
+<script src="js/targets.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/backup.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
